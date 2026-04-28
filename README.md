@@ -52,6 +52,7 @@ npm install
 | `npm run build:firefox` | Production build → `.output/firefox-mv2/` |
 | `npm run zip` | Build + zip Chrome extension |
 | `npm run zip:firefox` | Build + zip Firefox extension |
+| `npm run sign:firefox` | Build + sign for Firefox self-distribution |
 | `npm run compile` | TypeScript type-check only |
 
 ### Load the extension
@@ -62,10 +63,30 @@ npm install
 3. Enable **Developer mode**
 4. Click **Load unpacked** and select `.output/chrome-mv3/`
 
-**Firefox**
+**Firefox (temporary, for development)**
 1. Run `npm run build:firefox` (or `npm run dev:firefox`)
 2. Open `about:debugging#/runtime/this-firefox`
 3. Click **Load Temporary Add-on** and select `.output/firefox-mv2/manifest.json`
+
+### Sign and install permanently in Firefox
+
+Firefox requires all extensions to be signed by Mozilla before permanent installation.
+
+1. Get API credentials at https://addons.mozilla.org/developers/addon/api/key/
+2. Copy `.env.example` to `.env` and fill in your credentials:
+   ```bash
+   cp .env.example .env
+   ```
+3. Sign and download the signed `.xpi`:
+   ```bash
+   npm run sign:firefox
+   ```
+4. Install the `.xpi` from `web-ext-artifacts/`:
+   - Open `about:addons`
+   - Click the gear icon → **Install Add-on From File...**
+   - Select the signed `.xpi`
+
+> **Note:** First-time submissions go through manual review (may take hours). For instant self-distribution, use `--channel unlisted` (already the default in the script).
 
 ## Tech Stack
 

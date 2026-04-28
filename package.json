@@ -12,6 +12,7 @@
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
+    "sign:firefox": "npm run build:firefox && web-ext sign --source-dir .output/firefox-mv2 --channel unlisted",
     "postinstall": "wxt prepare"
   },
   "dependencies": {
@@ -23,6 +24,7 @@
     "@types/react-dom": "^19.2.3",
     "@wxt-dev/module-react": "^1.1.5",
     "typescript": "^5.9.3",
+    "web-ext": "^10.1.0",
     "wxt": "^0.20.25"
   }
 }
