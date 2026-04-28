@@ -2,7 +2,7 @@
   "name": "cat-say-stop",
   "description": "Forces a 5-minute break from social media, guarded by a cat.",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "wxt",
